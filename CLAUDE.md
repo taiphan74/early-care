@@ -4,20 +4,25 @@
 
 - **Project**: Website bảo hiểm sức khỏe cá nhân "Early Care" (tiếng Việt)
 - **Brand colors**: `--brand-primary: #0C3BAA`, `--brand-secondary: #3B82F6` — dùng `var(--brand-primary)` thay vì hardcoded hex
-- **CTA**: "TƯ VẤN NGAY" — dùng `variant="consult"` trong shadcn Button (custom variant với gradient + shadow)
+- **CTA**: "TƯ VẤN NGAY" — dùng `motion.button` với `whileHover/whileTap` spring animation (scale 1.05/0.95)
 
 ## Stack & Conventions
 
 - `globals.css` — Tailwind v4 dùng `@theme inline`, không có `tailwind.config.*`
 - `components/ui/` — shadcn/ui v4 (button, navigation-menu, sheet, etc.)
+- NavigationMenu dropdown: dùng `left-1/2 -translate-x-1/2` để căn giữa theo trigger
 - Font: Geist (`next/font/google`), `lang="vi"`
 - `public/images/` — logo.png và hình ảnh khác
 - Header: `sticky top-0` với `backdrop-blur-sm`
 
 ## Navigation
 
-- Giới thiệu, Sản phẩm (dropdown), Blog (dropdown), Liên hệ
-- Mobile: Sheet slide từ phải, có accordion submenu
+- Giới thiệu, Sản phẩm (dropdown), Liên hệ — tất cả là `<span>` không navigate trong dev
+- Mobile: Sheet slide từ phải, có accordion submenu cho Sản phẩm
+
+## Commit Rule
+
+**Chỉ commit git khi người dùng yêu cầu tường minh.** Không tự động commit dù task đã hoàn thành. Khi hoàn xong, thông báo sẵn sàng và đợi user nói "commit đi".
 
 <!-- code-review-graph MCP tools -->
 ## MCP Tools: code-review-graph
