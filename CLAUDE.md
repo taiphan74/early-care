@@ -19,6 +19,14 @@
 
 - Giới thiệu, Sản phẩm (dropdown), Liên hệ — tất cả là `<span>` không navigate trong dev
 - Mobile: Sheet slide từ phải, có accordion submenu cho Sản phẩm
+- Smooth scroll: `document.getElementById("section-id")?.scrollIntoView({ behavior: "smooth" })`
+
+## Page Layout (Snap Scroll)
+
+- Wrapper: `<div className="h-[calc(100vh-65px)] overflow-y-scroll snap-y snap-mandatory">`
+- Section: `<section className="h-[calc(100vh-65px)] snap-start">`
+- Header height dùng 65px trong calc() (tương đương h-16 = 64px cộng thêm border)
+- Body không nên có `snap-y snap-mandatory overflow-y-auto` khi dùng page-level snap wrapper
 
 ## Commit Rule
 
