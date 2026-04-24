@@ -24,6 +24,16 @@
 
 **Chỉ commit git khi người dùng yêu cầu tường minh.** Không tự động commit dù task đã hoàn thành. Khi hoàn xong, thông báo sẵn sàng và đợi user nói "commit đi".
 
+## Framer Motion
+
+- Components dùng `motion.*` phải có `"use client"` ở đầu file
+- Khi dùng `ease` trong variants: dùng `[0.25, 0.1, 0.25, 1] as const` thay vì `"easeOut"` string để tránh TypeScript lỗi
+
+## Animation Patterns
+
+- Stagger list items: container với `staggerChildren: 0.15` trong `show.transition`
+- fadeUpDelayed(delay): animation factory cho từng element với delay riêng
+
 <!-- code-review-graph MCP tools -->
 ## MCP Tools: code-review-graph
 

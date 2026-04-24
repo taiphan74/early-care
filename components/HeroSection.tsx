@@ -4,12 +4,14 @@ import { HeroIconCluster } from "@/components/HeroIconCluster"
 export function HeroSection() {
   return (
     <section className="relative min-h-[500px] overflow-hidden lg:min-h-[600px]">
-      {/* Gradient background */}
+      {/* Multi-layer gradient: linear base + radial highlight */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(135deg, var(--brand-primary), #1e5de0, var(--brand-secondary))",
+          background: `
+            radial-gradient(circle at 65% 45%, rgba(255,255,255,0.55), transparent 40%),
+            linear-gradient(135deg, var(--brand-primary) 0%, #3B82F6 45%, #EAF2FF 100%)
+          `,
         }}
       />
 
