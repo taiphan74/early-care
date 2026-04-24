@@ -72,7 +72,10 @@ export function Header() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="cursor-pointer text-sm font-medium text-foreground">
+              <NavigationMenuTrigger
+                className="cursor-pointer text-sm font-medium text-foreground"
+                onClick={() => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" })}
+              >
                 Sản phẩm
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -82,6 +85,7 @@ export function Header() {
                       <NavigationMenuLink asChild>
                         <span
                           className="block cursor-pointer rounded-md p-3 text-sm transition-colors hover:bg-muted"
+                          onClick={() => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" })}
                         >
                           <div className="flex flex-col gap-1">
                             <div className="font-medium leading-none">{item.title}</div>

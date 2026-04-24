@@ -133,17 +133,10 @@ export function HeroContent() {
           variant="consult"
           size="lg"
           className="gap-2 rounded-full px-6 text-sm font-semibold"
+          onClick={() => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" })}
         >
           TÌM HIỂU THÊM
           <ArrowRight className="h-4 w-4" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="lg"
-          className="gap-2 rounded-full border border-white/20 px-6 text-sm font-semibold text-white hover:bg-white/10 hover:text-white"
-        >
-          <Play className="h-4 w-4" fill="white" />
-          XEM VIDEO GIỚI THIỆU
         </Button>
       </motion.div>
     </div>

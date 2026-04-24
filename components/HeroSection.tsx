@@ -3,7 +3,7 @@ import { HeroIconCluster } from "@/components/HeroIconCluster"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[500px] overflow-hidden lg:min-h-[600px]">
+    <section id="hero" className="relative h-[calc(100vh-65px)] snap-start flex items-center overflow-hidden">
       {/* Multi-layer gradient: linear base + radial highlight */}
       <div
         className="absolute inset-0"
@@ -16,15 +16,17 @@ export function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-[500px] flex-col justify-center py-16 lg:min-h-[600px] lg:py-24">
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+        <div className="grid w-full grid-cols-1 items-center gap-8 md:grid-cols-2">
           {/* Left: Text content */}
           <HeroContent />
+
+          {/* Right: Icon cluster */}
+          <div className="hidden md:flex md:items-center md:justify-center">
+            <HeroIconCluster />
+          </div>
         </div>
       </div>
-
-      {/* Right: Icon cluster */}
-      <HeroIconCluster />
     </section>
   )
 }

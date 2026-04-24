@@ -38,8 +38,8 @@ const centerIcon: IconItem = {
   src: "/images/icon-health-protection-shield.png",
   alt: "Bảo vệ sức khỏe",
   label: "",
-  wrapperClass: "left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2",
-  size: 260,
+  wrapperClass: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+  size: 220,
 }
 
 // Icon phụ xung quanh — tất cả cùng kích thước
@@ -48,36 +48,36 @@ const surroundingIcons: IconItem[] = [
     src: "/images/icon-medical-check.png",
     alt: "Kiểm tra sức khỏe",
     label: "Bảo vệ toàn diện",
-    wrapperClass: "left-[8%] top-[22%]",
-    size: 150,
+    wrapperClass: "left-[10%] top-[10%]",
+    size: 120,
   },
   {
     src: "/images/early-care-icon-stethoscope.png",
     alt: "Ống nghe y tế",
     label: "Khám chữa bệnh",
-    wrapperClass: "right-[6%] top-[22%]",
-    size: 150,
+    wrapperClass: "right-[8%] top-[10%]",
+    size: 120,
   },
   {
     src: "/images/icon-healthcare-hospital-3d.png",
     alt: "Bệnh viện",
     label: "Nằm viện & phẫu thuật",
-    wrapperClass: "left-[8%] bottom-[20%]",
-    size: 150,
+    wrapperClass: "left-[10%] bottom-[14%]",
+    size: 120,
   },
   {
     src: "/images/icon-fast-transparent-claim.png",
     alt: "Bồi thường nhanh",
     label: "Minh bạch, nhanh chóng",
-    wrapperClass: "right-[8%] bottom-[20%]",
-    size: 150,
+    wrapperClass: "right-[8%] bottom-[14%]",
+    size: 120,
   },
   {
     src: "/images/icon-health-support.png",
     alt: "Hỗ trợ sức khỏe",
     label: "An tâm tận hưởng",
-    wrapperClass: "left-[50%] bottom-[6%] -translate-x-1/2",
-    size: 150,
+    wrapperClass: "left-1/2 bottom-[4%] -translate-x-1/2",
+    size: 120,
   },
 ]
 
@@ -126,22 +126,20 @@ function IconWithLabel({
 
 export function HeroIconCluster() {
   return (
-    <div className="absolute inset-y-0 right-0 hidden w-1/2 md:block">
-      {/* Wrapper cố định vùng visual */}
-      <motion.div
-        className="relative mx-auto h-full max-w-[720px]"
-        variants={iconContainer}
-        initial="hidden"
-        animate="show"
-      >
-        {/* Icon trung tâm */}
-        <IconWithLabel icon={centerIcon} isCenter variants={fadeUp} />
+    <motion.div
+      className="relative w-full max-w-[520px] lg:max-w-[600px]"
+      style={{ aspectRatio: "1 / 1" }}
+      variants={iconContainer}
+      initial="hidden"
+      animate="show"
+    >
+      {/* Icon trung tâm */}
+      <IconWithLabel icon={centerIcon} isCenter variants={fadeUp} />
 
-        {/* Icon phụ xung quanh */}
-        {surroundingIcons.map((icon) => (
-          <IconWithLabel key={icon.src} icon={icon} variants={fadeUp} />
-        ))}
-      </motion.div>
-    </div>
+      {/* Icon phụ xung quanh */}
+      {surroundingIcons.map((icon) => (
+        <IconWithLabel key={icon.src} icon={icon} variants={fadeUp} />
+      ))}
+    </motion.div>
   )
 }
