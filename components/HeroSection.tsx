@@ -33,20 +33,11 @@ export function HeroSection() {
         }}
       />
 
-      {/* Illustration — desktop absolute right, mobile cropped */}
-      <div className="absolute inset-y-0 right-0 hidden w-1/2 md:block lg:w-[45%]">
-        <img
-          src="/images/early-care-hero-insurance-illustration.png"
-          alt="Bảo hiểm sức khỏe"
-          className="h-full w-full object-cover object-left"
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex min-h-[500px] flex-col justify-center py-16 lg:min-h-[600px] lg:py-24">
-          {/* Text block — constrained width on desktop */}
-          <div className="max-w-xl lg:max-w-[55%]">
+          {/* Text block */}
+          <div className="max-w-2xl">
             {/* Label */}
             <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-white/80">
               SẢN PHẨM BẢO HIỂM
