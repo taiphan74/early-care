@@ -159,22 +159,3 @@
   transform: scale(0.96);
 }
 
-/* ===== HERO ANIMATIONS ===== */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.hero-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-float {
-    animation: none;
-  }
-}

@@ -38,7 +38,7 @@ export function HeroSection() {
         <img
           src="/images/early-care-hero-insurance-illustration.png"
           alt="Bảo hiểm sức khỏe"
-          className="hero-float h-full w-full object-cover object-left"
+          className="h-full w-full object-cover object-left"
         />
       </div>
 
