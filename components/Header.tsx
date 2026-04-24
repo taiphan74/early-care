@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { useState } from "react"
+import { motion } from "framer-motion"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -38,21 +39,15 @@ function Logo() {
 }
 
 const productItems = [
-  { title: "Bảo hiểm cơ bản", href: "/san-pham/co-ban", description: "Gói bảo hiểm sức khỏe cơ bản" },
-  { title: "Bảo hiểm nâng cao", href: "/san-pham/nang-cao", description: "Gói bảo hiểm toàn diện" },
-  { title: "Bảo hiểm gia đình", href: "/san-pham/gia-dinh", description: "Bảo vệ cả gia đình" },
+  { title: "Bảo hiểm Cơ bản", subtitle: "Khởi đầu bảo vệ sức khỏe mỗi ngày" },
+  { title: "Bảo hiểm Nâng cao", subtitle: "Bảo vệ toàn diện trước rủi ro lớn" },
+  { title: "Bảo hiểm Gia đình", subtitle: "An tâm cho cả gia đình bạn" },
 ]
 
-const blogItems = [
-  { title: "Tin tức", href: "/blog/tin-tuc" },
-  { title: "Kiến thức sức khỏe", href: "/blog/kien-thuc" },
-  { title: "Hướng dẫn", href: "/blog/huong-dan" },
-]
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
-  const [mobileBlogOpen, setMobileBlogOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur-sm">
@@ -71,32 +66,28 @@ export function Header() {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="gap-1">
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  href="/gioi-thieu"
-                  className="inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none"
-                >
-                  Giới thiệu
-                </Link>
-              </NavigationMenuLink>
+              <span className="cursor-pointer inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none">
+                Giới thiệu
+              </span>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm font-medium text-foreground">
+              <NavigationMenuTrigger className="cursor-pointer text-sm font-medium text-foreground">
                 Sản phẩm
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[280px] gap-1 p-2">
                   {productItems.map((item) => (
-                    <li key={item.href}>
+                    <li key={item.title}>
                       <NavigationMenuLink asChild>
-                        <Link
-                          href={item.href}
-                          className="block rounded-md p-3 text-sm transition-colors hover:bg-muted"
+                        <span
+                          className="block cursor-pointer rounded-md p-3 text-sm transition-colors hover:bg-muted"
                         >
-                          <div className="font-medium text-foreground">{item.title}</div>
-                          <div className="text-xs text-muted-foreground">{item.description}</div>
-                        </Link>
+                          <div className="flex flex-col gap-1">
+                            <div className="font-medium leading-none">{item.title}</div>
+                            <div className="line-clamp-2 text-xs text-muted-foreground">{item.subtitle}</div>
+                          </div>
+                        </span>
                       </NavigationMenuLink>
                     </li>
                   ))}
@@ -104,46 +95,26 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm font-medium text-foreground">
-                Blog
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[200px] gap-1 p-2">
-                  {blogItems.map((item) => (
-                    <li key={item.href}>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          href={item.href}
-                          className="block rounded-md p-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-                        >
-                          {item.title}
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  href="/lien-he"
-                  className="inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none"
-                >
-                  Liên hệ
-                </Link>
-              </NavigationMenuLink>
+                        <NavigationMenuItem>
+              <span
+                className="cursor-pointer inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none"
+              >
+                Liên hệ
+              </span>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button variant="consult" size="lg" className="px-6">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="cursor-pointer rounded-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] px-6 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(12,59,170,0.25)]"
+          >
             TƯ VẤN NGAY
-          </Button>
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
@@ -163,7 +134,7 @@ export function Header() {
             <nav className="mt-6 flex flex-col gap-1">
               <Link
                 href="/gioi-thieu"
-                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                className="cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Giới thiệu
@@ -171,7 +142,7 @@ export function Header() {
 
               <div>
                 <button
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                  className="flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                   onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
                 >
                   Sản phẩm
@@ -180,55 +151,35 @@ export function Header() {
                 {mobileProductsOpen && (
                   <div className="ml-4 flex flex-col gap-1">
                     {productItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      <span
+                        key={item.title}
+                        className="cursor-pointer rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.title}
-                      </Link>
+                      </span>
                     ))}
                   </div>
                 )}
               </div>
 
-              <div>
-                <button
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-                  onClick={() => setMobileBlogOpen(!mobileBlogOpen)}
-                >
-                  Blog
-                  <ChevronDown className={`size-4 transition-transform ${mobileBlogOpen ? "rotate-180" : ""}`} />
-                </button>
-                {mobileBlogOpen && (
-                  <div className="ml-4 flex flex-col gap-1">
-                    {blogItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <Link
+                            <Link
                 href="/lien-he"
-                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                className="cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Liên hệ
               </Link>
 
               <div className="mt-4 pt-4 border-t">
-                <Button variant="consult" className="w-full">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="w-full rounded-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] px-6 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(12,59,170,0.25)]"
+                >
                   TƯ VẤN NGAY
-                </Button>
+                </motion.button>
               </div>
             </nav>
           </SheetContent>
