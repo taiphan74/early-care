@@ -54,14 +54,14 @@ const surroundingIcons: IconItem[] = [
   {
     src: "/images/early-care-icon-stethoscope.png",
     alt: "Ống nghe y tế",
-    label: "Khám chữa bệnh",
+    label: "Tầm soát ung thư",
     wrapperClass: "right-[8%] top-[10%]",
     size: 120,
   },
   {
     src: "/images/icon-healthcare-hospital-3d.png",
     alt: "Bệnh viện",
-    label: "Nằm viện & phẫu thuật",
+    label: "Chi phí nằm viện",
     wrapperClass: "left-[10%] bottom-[14%]",
     size: 120,
   },
@@ -116,7 +116,7 @@ function IconWithLabel({
 
       {/* Label cho icon phụ */}
       {!isCenter && icon.label && (
-        <span className="mt-2 max-w-[140px] text-center text-sm font-semibold text-white drop-shadow-md">
+        <span className="mt-2 whitespace-nowrap text-center text-sm font-semibold text-white drop-shadow-md">
           {icon.label}
         </span>
       )}

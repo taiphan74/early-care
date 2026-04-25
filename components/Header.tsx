@@ -117,7 +117,7 @@ export function Header() {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="cursor-pointer rounded-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] px-6 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(12,59,170,0.25)]"
           >
-            TƯ VẤN NGAY
+            MUA NGAY
           </motion.button>
         </div>
 

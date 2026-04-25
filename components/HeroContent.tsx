@@ -1,6 +1,6 @@
 "use client"
 
-import { Shield, Heart, Handshake, ArrowRight, Play } from "lucide-react"
+import { Shield, Sparkles, Handshake, ArrowRight, Play } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
@@ -42,20 +42,20 @@ const listItem = {
 const sellingPoints = [
   {
     icon: Shield,
-    title: "Bảo vệ toàn diện",
+    title: "Bảo vệ chủ động",
     description:
-      "Chi trả chi phí khám chữa bệnh, nằm viện, phẫu thuật và thậm chí hơn thế nữa.",
+      "Hỗ trợ chi phí tầm soát ung thư, giúp phát hiện bệnh từ giai đoạn sớm.",
   },
   {
-    icon: Heart,
-    title: "Linh hoạt lựa chọn",
+    icon: Sparkles,
+    title: "Cá nhân hóa bằng AI",
     description:
-      "Nhiều gói bảo hiểm phù hợp với nhu cầu và ngân sách của bạn.",
+      "Ứng dụng trí tuệ nhân tạo để đánh giá rủi ro và điều chỉnh quyền lợi, phí bảo hiểm phù hợp với từng khách hàng.",
   },
   {
     icon: Handshake,
-    title: "Dịch vụ tận tâm",
-    description: "Hỗ trợ 24/7, giải quyết nhanh chóng và minh bạch.",
+    title: "Minh bạch, nhanh chóng",
+    description: "Quy trình bồi thường tự động, kết nối hệ thống y tế giúp xử lý nhanh và minh bạch.",
   },
 ]
 
@@ -81,7 +81,9 @@ export function HeroContent() {
       >
         Bảo hiểm
         <br />
-        sức khỏe cá nhân
+        ung thư chủ động 
+        <br />
+        Early Care
       </motion.h1>
 
       {/* Subheadline */}
@@ -91,7 +93,7 @@ export function HeroContent() {
         animate="show"
         className="mb-8 text-base text-white/90 sm:text-lg"
       >
-        Chủ động bảo vệ sức khỏe – An tâm tận hưởng cuộc sống
+        Bảo hiểm Ung thư Chủ động Early Care — thiết kế cho thế hệ chủ động chăm sóc sức khoẻ từ hôm nay, không chờ đến khi quá muộn.
       </motion.p>
 
       {/* Selling points */}
@@ -114,7 +116,7 @@ export function HeroContent() {
                 <Icon className="h-4 w-4 text-white" />
               </span>
               <div>
-                <p className="font-semibold text-white">{point.title}</p>
+                <p className="whitespace-nowrap font-semibold text-white">{point.title}</p>
                 <p className="text-sm text-white/75">{point.description}</p>
               </div>
             </motion.li>
