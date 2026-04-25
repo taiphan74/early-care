@@ -1,7 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { useApplicationStore } from "@/stores/application-store"
 import type { Plan } from "./data"
 import {
   ShieldCheck,
@@ -30,6 +32,13 @@ export function PlanCard({
   plan: Plan
   index: number
 }) {
+  const router = useRouter()
+  const selectPlan = useApplicationStore((s) => s.selectPlan)
+
+  function handleSelectPlan() {
+    selectPlan(plan)
+    router.push("/application")
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -129,6 +138,7 @@ export function PlanCard({
 
       {/* CTA */}
       <motion.button
+        onClick={handleSelectPlan}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
