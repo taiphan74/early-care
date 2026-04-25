@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { ArrowLeft, ArrowRight, Check, ClipboardCheck, Info, ShieldPlus, User, Users } from "lucide-react"
 import { motion } from "framer-motion"
 import { useApplicationStore, type ApplicationDraft, type BuyerType, type Gender, type HealthAnswer } from "@/stores/application-store"
+import { StepIndicator } from "@/components/StepIndicator"
 import { cn } from "@/lib/utils"
 
 const healthQuestions = [
@@ -22,17 +23,17 @@ const occupationOptions = ["Nhân viên văn phòng", "Kinh doanh", "Giáo viên
 const initialDraft: ApplicationDraft = {
   buyerType: "self",
   relationship: "",
-  fullName: "",
-  dateOfBirth: "",
+  fullName: "Nguyễn Văn A",
+  dateOfBirth: "1985-03-15",
   gender: "male",
-  phone: "",
-  email: "",
-  occupation: "",
-  identityNumber: "",
-  identityIssuedDate: "",
-  identityIssuedPlace: "",
+  phone: "0901234567",
+  email: "nguyenvana@email.com",
+  occupation: "Nhân viên văn phòng",
+  identityNumber: "079085123456",
+  identityIssuedDate: "2020-06-20",
+  identityIssuedPlace: "TP.HCM",
   healthAnswers: ["no", "no", "no", "no", "no"],
-  committed: false,
+  committed: true,
 }
 
 type ValidationErrors = Partial<Record<keyof ApplicationDraft, string>>
@@ -121,12 +122,13 @@ export function ApplicationPageClient() {
     saveApplicationDraft(draft)
     setErrors({})
     setSaved(true)
+    router.push("/checkout")
   }
 
   return (
     <main className="min-h-[calc(100vh-65px)] bg-[linear-gradient(180deg,#eff6ff_0%,#f8fbff_45%,#ffffff_100%)] px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <StepIndicator />
+        <StepIndicator activeStep={0} />
 
         <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -309,29 +311,6 @@ export function ApplicationPageClient() {
         </form>
       </div>
     </main>
-  )
-}
-
-function StepIndicator() {
-  const steps = ["Thông tin & Khai báo", "Thông tin bổ sung", "Xem lại & Thanh toán", "Hoàn tất"]
-
-  return (
-    <div className="mb-8 overflow-x-auto pb-2">
-      <div className="mx-auto flex min-w-[720px] max-w-4xl items-center justify-between gap-4">
-        {steps.map((step, index) => {
-          const active = index === 0
-          return (
-            <div key={step} className="flex flex-1 items-center gap-4 last:flex-none">
-              <div className="flex items-center gap-3">
-                <span className={cn("flex h-11 w-11 items-center justify-center rounded-full border text-sm font-bold", active ? "border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white shadow-lg shadow-blue-700/20" : "border-blue-100 bg-white text-slate-500")}>{index + 1}</span>
-                <span className={cn("max-w-28 text-sm font-semibold", active ? "text-[var(--brand-primary)]" : "text-slate-500")}>{step}</span>
-              </div>
-              {index < steps.length - 1 && <div className={cn("h-px flex-1", active ? "bg-[var(--brand-primary)]" : "bg-blue-100")} />}
-            </div>
-          )
-        })}
-      </div>
-    </div>
   )
 }
 
