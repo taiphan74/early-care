@@ -9,7 +9,7 @@ type StepIndicatorProps = {
 const steps = [
   "Thông tin & Khai báo",
   "Thông tin bổ sung",
-  "Xem lại & Thanh toán",
+  "Thanh toán",
   "Hoàn tất",
 ]
 

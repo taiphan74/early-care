@@ -1,6 +1,6 @@
 "use client"
 
-import { Shield, Sparkles, Handshake, ArrowRight, Play } from "lucide-react"
+import { Shield, Sparkles, Handshake, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 

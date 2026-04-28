@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import {
@@ -22,6 +23,7 @@ import {
 } from "@/components/ui/sheet"
 import { Menu, ChevronDown } from "lucide-react"
 import Image from "next/image"
+import { createPlansNavigator } from "./header-navigation"
 
 function Logo() {
   return (
@@ -41,13 +43,20 @@ function Logo() {
 const productItems = [
   { title: "Bảo hiểm Cơ bản", subtitle: "Khởi đầu bảo vệ sức khỏe mỗi ngày" },
   { title: "Bảo hiểm Nâng cao", subtitle: "Bảo vệ toàn diện trước rủi ro lớn" },
-  { title: "Bảo hiểm Gia đình", subtitle: "An tâm cho cả gia đình bạn" },
+  { title: "Bảo hiểm Toàn diện", subtitle: "Bảo vệ toàn diện trước mọi rủi ro" },
 ]
 
 
 export function Header() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
+  const navigateToPlans = createPlansNavigator({
+    getPathname: () => pathname,
+    push: (href) => router.push(href),
+    scrollToPlans: () => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" }),
+  })
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur-sm">
@@ -66,9 +75,12 @@ export function Header() {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="gap-1">
             <NavigationMenuItem>
-              <span className="cursor-pointer inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none">
+              <Link
+                href="/"
+                className="inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none"
+              >
                 Giới thiệu
-              </span>
+              </Link>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
@@ -99,14 +111,7 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-                        <NavigationMenuItem>
-              <span
-                className="cursor-pointer inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:outline-none"
-              >
-                Liên hệ
-              </span>
-            </NavigationMenuItem>
-          </NavigationMenuList>
+                      </NavigationMenuList>
         </NavigationMenu>
 
         {/* CTA Button */}
@@ -116,6 +121,7 @@ export function Header() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="cursor-pointer rounded-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] px-6 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(12,59,170,0.25)]"
+            onClick={navigateToPlans}
           >
             MUA NGAY
           </motion.button>
@@ -137,7 +143,7 @@ export function Header() {
             </SheetHeader>
             <nav className="mt-6 flex flex-col gap-1">
               <Link
-                href="/gioi-thieu"
+                href="/"
                 className="cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -167,20 +173,16 @@ export function Header() {
                 )}
               </div>
 
-                            <Link
-                href="/lien-he"
-                className="cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Liên hệ
-              </Link>
-
               <div className="mt-4 pt-4 border-t">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   className="w-full rounded-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] px-6 py-2 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(12,59,170,0.25)]"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    navigateToPlans()
+                  }}
                 >
                   TƯ VẤN NGAY
                 </motion.button>

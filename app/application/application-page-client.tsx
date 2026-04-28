@@ -8,16 +8,9 @@ import { motion } from "framer-motion"
 import { useApplicationStore, type ApplicationDraft, type BuyerType, type Gender, type HealthAnswer } from "@/stores/application-store"
 import { StepIndicator } from "@/components/StepIndicator"
 import { cn } from "@/lib/utils"
+import { healthQuestions, questionFiveDetails } from "./health-declaration"
 
-const healthQuestions = [
-  "NĐBH đã hoặc đang mắc phải bệnh tâm thần, thần kinh, bệnh phong không?",
-  "NĐBH đã hoặc đang trong tình trạng thương tật vĩnh viên trên 50%?",
-  "NĐBH có đang trong thời gian điều trị nội trú do bệnh hoặc tai nạn không?",
-  "NĐBH đã hay đang mắc hoặc bị nghi ngờ phải, hoặc đang trong quá trình kiểm tra bệnh ung thư, khối u, u nang, phát triển ung thư biểu mô tại chỗ của bất kỳ loại ung thư nào không?",
-  "NĐBH đã hoặc đang có một trong các dấu hiệu bất thường sau đây mà chưa được chẩn đoán rõ nguyên nhân không?",
-]
-
-const relationshipOptions = ["Vợ/chồng", "Con", "Bố/mẹ", "Anh/chị/em", "Người thân khác"]
+const relationshipOptions = ["Vợ/chồng", "Con", "Bố/mẹ"]
 const occupationOptions = ["Nhân viên văn phòng", "Kinh doanh", "Giáo viên", "Kỹ sư", "Khác"]
 
 const initialDraft: ApplicationDraft = {
@@ -61,7 +54,7 @@ export function ApplicationPageClient() {
   const savedDraft = useApplicationStore((state) => state.applicationDraft)
   const saveApplicationDraft = useApplicationStore((state) => state.saveApplicationDraft)
 
-  const [draft, setDraft] = useState<ApplicationDraft>(() => savedDraft ?? initialDraft)
+  const [draft, setDraft] = useState<ApplicationDraft>(() => ({ ...initialDraft, ...savedDraft }))
   const [errors, setErrors] = useState<ValidationErrors>({})
   const [saved, setSaved] = useState(false)
 
@@ -122,7 +115,7 @@ export function ApplicationPageClient() {
     saveApplicationDraft(draft)
     setErrors({})
     setSaved(true)
-    router.push("/checkout")
+    router.push("/review")
   }
 
   return (
@@ -248,13 +241,26 @@ export function ApplicationPageClient() {
 
             <div className="overflow-hidden rounded-2xl border border-slate-200">
               {healthQuestions.map((question, index) => (
-                <div key={question} className="grid gap-3 border-b border-slate-200 p-4 last:border-b-0 lg:grid-cols-[36px_1fr_220px] lg:items-center">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-[var(--brand-primary)]">{index + 1}</span>
-                  <p className="text-sm font-medium text-slate-800">{question}</p>
-                  <div className="flex gap-4">
-                    <RadioPill active={draft.healthAnswers[index] === "no"} label="Không" tone="green" onClick={() => updateHealthAnswer(index, "no")} />
-                    <RadioPill active={draft.healthAnswers[index] === "yes"} label="Có" tone="red" onClick={() => updateHealthAnswer(index, "yes")} />
+                <div key={question} className="border-b border-slate-200 p-4 last:border-b-0">
+                  <div className="grid gap-3 lg:grid-cols-[36px_1fr_220px] lg:items-center">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-[var(--brand-primary)]">{index + 1}</span>
+                    <p className="text-sm font-medium text-slate-800">{question}</p>
+                    <div className="flex gap-4">
+                      <RadioPill active={draft.healthAnswers[index] === "no"} label="Không" tone="green" onClick={() => updateHealthAnswer(index, "no")} />
+                      <RadioPill active={draft.healthAnswers[index] === "yes"} label="Có" tone="red" onClick={() => updateHealthAnswer(index, "yes")} />
+                    </div>
                   </div>
+
+                  {index === 4 && (
+                    <div className="mt-4 space-y-3 rounded-2xl bg-blue-50/70 p-3 lg:ml-12">
+                      {questionFiveDetails.map((detail, detailIndex) => (
+                        <div key={detail} className="grid gap-3 rounded-xl bg-white p-3 lg:grid-cols-[44px_1fr] lg:items-center">
+                          <span className="text-sm font-bold text-[var(--brand-primary)]">5.{detailIndex + 1}</span>
+                          <p className="text-sm text-slate-700">{detail}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { QRCodeSVG } from "qrcode.react"
 import {
   CalendarDays,
   ChevronDown,
@@ -16,11 +17,9 @@ import {
   Wallet,
 } from "lucide-react"
 import {
-  bankApps,
   bankTransferDetails,
   orderSummary,
   paymentMethods,
-  type PaymentApp,
   type PaymentMethodKey,
   walletApps,
 } from "@/components/checkout/checkout-data"
@@ -47,7 +46,7 @@ export function CheckoutPaymentMethods({
       <section className="rounded-[28px] border border-[#d9e4ff] bg-white p-6 shadow-[0_18px_60px_rgba(12,59,170,0.08)]">
         <h2 className="text-lg font-semibold text-slate-900">1. Chọn phương thức thanh toán</h2>
 
-        <div className="mt-5 grid grid-cols-3 overflow-hidden rounded-2xl border border-[#d9e4ff] bg-[#f8fbff]">
+        <div className="mt-5 grid overflow-hidden rounded-2xl border border-[#d9e4ff] bg-[#f8fbff] sm:grid-cols-3">
           {paymentMethods.map((method) => {
             const Icon = methodIcons[method.key]
             const isActive = method.key === activeMethod
@@ -58,7 +57,7 @@ export function CheckoutPaymentMethods({
                 type="button"
                 onClick={() => onMethodChange(method.key)}
                 className={cn(
-                  "flex items-center justify-center gap-2 border-r border-[#d9e4ff] px-4 py-4 text-sm font-semibold transition-colors last:border-r-0",
+                  "flex items-center justify-center gap-2 border-b border-[#d9e4ff] px-4 py-4 text-sm font-semibold transition-colors last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0",
                   isActive
                     ? "bg-white text-[var(--brand-primary)] shadow-[inset_0_0_0_1px_rgba(12,59,170,0.25)]"
                     : "text-slate-700 hover:bg-white/70"
@@ -92,26 +91,23 @@ function QrMethodContent() {
         </p>
       </div>
 
-      <div className="grid grid-cols-[240px_1fr] gap-5">
+      <div className="grid gap-5 lg:grid-cols-[240px_1fr]">
         <div className="rounded-2xl border border-[#d9e4ff] bg-white p-4">
-          <div className="flex aspect-square items-center justify-center rounded-xl border border-dashed border-[#b8cbff] bg-[linear-gradient(135deg,#ffffff_0%,#edf4ff_100%)]">
-            <div className="grid grid-cols-6 gap-1">
-              {Array.from({ length: 36 }).map((_, index) => (
-                <span
-                  key={index}
-                  className={cn(
-                    "size-4 rounded-[2px]",
-                    index % 3 === 0 || index % 5 === 0 ? "bg-slate-900" : "bg-slate-200"
-                  )}
-                />
-              ))}
-            </div>
+          <div className="flex aspect-square items-center justify-center rounded-xl bg-white p-4">
+            <QRCodeSVG
+              value="https://early-care.vercel.app/completed?method=qr&ref=EC241120240001"
+              size={192}
+              level="M"
+              bgColor="#ffffff"
+              fgColor="#0f172a"
+              className="h-full max-h-48 w-full max-w-48"
+            />
           </div>
           <p className="mt-4 text-center text-sm text-slate-500">Quét mã bằng ứng dụng ngân hàng</p>
         </div>
 
         <div className="rounded-2xl border border-[#d9e4ff] bg-white p-4">
-          <div className="grid grid-cols-[180px_1fr] gap-y-3 text-sm">
+          <div className="grid gap-x-4 gap-y-3 text-sm sm:grid-cols-[180px_1fr]">
             <span className="text-slate-500">{bankTransferDetails.bankNameLabel}</span>
             <span className="font-medium text-slate-900">{bankTransferDetails.bankNameValue}</span>
 
@@ -130,19 +126,6 @@ function QrMethodContent() {
         </div>
       </div>
 
-      <div className="space-y-4 border-t border-[#e7efff] pt-5">
-        <div>
-          <p className="text-sm font-medium text-slate-900">Quét mã bằng ứng dụng ngân hàng</p>
-          <div className="mt-3 flex flex-wrap gap-3">
-            {bankApps.map((app) => (
-              <AppChip key={app.id} {...app} />
-            ))}
-            <button type="button" className="text-sm font-medium text-[var(--brand-primary)]">
-              Xem thêm
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
@@ -373,22 +356,3 @@ function WalletMethodContent() {
   )
 }
 
-function AppChip({ label, shortLabel, logo }: PaymentApp) {
-  return (
-    <div className="flex min-w-32 items-center gap-3 rounded-2xl border border-[#d9e4ff] bg-white px-4 py-3">
-      {logo ? (
-        <img
-          src={logo}
-          alt={label}
-          className="size-9 rounded-xl object-contain"
-          loading="lazy"
-        />
-      ) : (
-        <span className="flex size-9 items-center justify-center rounded-xl bg-[#edf4ff] text-xs font-bold text-[var(--brand-primary)]">
-          {shortLabel}
-        </span>
-      )}
-      <span className="text-sm font-medium text-slate-800">{label}</span>
-    </div>
-  )
-}

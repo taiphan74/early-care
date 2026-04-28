@@ -42,14 +42,14 @@ export function CheckoutPageClient() {
   const countdownLabel = useMemo(() => formatCountdown(remainingSeconds), [remainingSeconds])
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#f5f9ff_0%,#eef4ff_100%)] px-6 py-10">
+    <main className="min-h-[calc(100vh-65px)] bg-[linear-gradient(180deg,#f5f9ff_0%,#eef4ff_100%)] px-4 py-8 sm:px-6 lg:py-10">
       <div className="mx-auto max-w-[1280px]">
-          <StepIndicator activeStep={2} />
+        <StepIndicator activeStep={2} />
 
-          <div className="grid grid-cols-[minmax(0,1.35fr)_380px] gap-8">
-            <div>
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.35fr)_380px]">
+          <div className="min-w-0">
               <header>
-                <h1 className="text-5xl font-bold tracking-tight text-slate-900">Thanh toán</h1>
+                <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Thanh toán</h1>
                 <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
                   <Lock className="size-4" />
                   <span>Thông tin của bạn được bảo mật tuyệt đối</span>
@@ -99,7 +99,7 @@ export function CheckoutPageClient() {
                 </div>
               </section>
 
-              <section className="mt-6 flex items-center justify-between rounded-[24px] border border-[#dbe6ff] bg-white px-6 py-5 shadow-[0_12px_35px_rgba(12,59,170,0.08)]">
+              <section className="mt-6 flex flex-col gap-4 rounded-[24px] border border-[#dbe6ff] bg-white px-5 py-5 shadow-[0_12px_35px_rgba(12,59,170,0.08)] sm:flex-row sm:items-center sm:justify-between sm:px-6">
                 <div className="flex items-start gap-4">
                   <div className="flex size-12 items-center justify-center rounded-2xl bg-[#edf4ff] text-[var(--brand-primary)]">
                     <TimerReset className="size-5" />
@@ -125,9 +125,9 @@ export function CheckoutPageClient() {
               <CheckoutSecurityFooter />
             </div>
 
-            <CheckoutOrderSummary />
-          </div>
+          <CheckoutOrderSummary />
         </div>
+      </div>
     </main>
   )
 }

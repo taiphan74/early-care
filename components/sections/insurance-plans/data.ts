@@ -4,7 +4,7 @@ export const plans = [
     name: "Gói cơ bản",
     tagline: "Bảo vệ thiết yếu, chi phí hợp lý",
     coverageAmount: "250.000.000đ",
-    price: "1.000.000đ",
+    price: "1.000.000đ - 1.200.000đ",
     pricePeriod: "/năm",
     features: [
       { label: "Quyền lợi bệnh Ung thư", value: "Tối đa 70% STBH", icon: "shield" },
@@ -21,7 +21,7 @@ export const plans = [
     name: "Gói nâng cao",
     tagline: "Bảo vệ tối ưu, cân bằng chi phí",
     coverageAmount: "500.000.000đ",
-    price: "2.100.000đ",
+    price: "2.000.000đ - 2.200.000đ",
     pricePeriod: "/năm",
     badge: "PHỔ BIẾN NHẤT",
     features: [
@@ -40,7 +40,7 @@ export const plans = [
     name: "Gói toàn diện",
     tagline: "Bảo vệ toàn diện, an tâm tuyệt đối",
     coverageAmount: "1.000.000.000đ",
-    price: "4.300.000đ",
+    price: "4.000.000đ - 4.500.000đ",
     pricePeriod: "/năm",
     features: [
       { label: "Quyền lợi bệnh Ung thư", value: "Tối đa 100% STBH", icon: "shield" },

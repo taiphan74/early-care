@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import type * as React from "react"
 import { motion } from "framer-motion"
 import { CheckCircle2, ChevronLeft, LockKeyhole, ShieldCheck, WalletCards } from "lucide-react"
@@ -62,19 +63,22 @@ export function CheckoutOrderSummary() {
       </section>
 
       <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-        <Button variant="consult" size="lg" className="h-14 w-full rounded-2xl text-base">
-          Xác nhận thanh toán {orderSummary.totalValue}
+        <Button asChild variant="consult" size="lg" className="h-14 w-full rounded-2xl text-base">
+          <Link href="/completed">Xác nhận thanh toán {orderSummary.totalValue}</Link>
         </Button>
       </motion.div>
 
       <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
         <Button
+          asChild
           variant="outline"
           size="lg"
           className="h-14 w-full rounded-2xl border-[#cfe0ff] bg-white text-base font-semibold text-[var(--brand-primary)]"
         >
-          <ChevronLeft className="size-4" />
-          Quay lại thông tin
+          <Link href="/application">
+            <ChevronLeft className="size-4" />
+            Quay lại thông tin
+          </Link>
         </Button>
       </motion.div>
     </aside>
