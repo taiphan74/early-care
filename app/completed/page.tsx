@@ -80,14 +80,6 @@ export default function CompletedPage() {
                 <Button asChild size="lg" className="h-14 rounded-2xl bg-red-600 px-6 text-base font-semibold text-white hover:bg-red-700">
                   <Link href="/claim">
                     <FileHeart className="size-4" />
-                    Quy trình bồi thường
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button asChild size="lg" className="h-14 rounded-2xl bg-red-600 px-6 text-base font-semibold text-white hover:bg-red-700">
-                  <Link href="/claim">
-                    <FileHeart className="size-4" />
                     Bồi thường
                   </Link>
                 </Button>

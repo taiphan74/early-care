@@ -184,7 +184,10 @@ export function ApplicationPageClient() {
                   <Info className="h-4 w-4" />
                   Lưu ý
                 </div>
-                <p>Tuổi tham gia: Từ 18 đến 65 tuổi.</p>
+                <ul className="list-inside list-disc space-y-1">
+                  <li>Đối tượng: Công dân Việt Nam hoặc người nước ngoài cư trú hợp pháp tại Việt Nam.</li>
+                  <li>Tuổi tham gia: Từ 18 đến 55 tuổi.</li>
+                </ul>
               </div>
             </div>
 

@@ -152,6 +152,7 @@ export function ReviewPageClient() {
                 <InfoRow label="Ngày hết hạn dự kiến" value={format(expiryDate, "dd/MM/yyyy")} />
                 <InfoRow label="Phí bảo hiểm/năm" value={selectedPlan.price} />
                 <InfoRow label="Chu kỳ đóng phí" value="Hàng năm" />
+                <InfoRow label="Thời gian chờ" value="90 ngày" />
               </div>
             </div>
 
