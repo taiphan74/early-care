@@ -57,7 +57,7 @@ export default function CompletedPage() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button asChild variant="consult" size="lg" className="h-14 rounded-2xl px-6 text-base">
                   <Link href="/">
@@ -74,6 +74,14 @@ export default function CompletedPage() {
                 >
                   <Download className="size-4" />
                   Tải chứng nhận
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button asChild size="lg" className="h-14 rounded-2xl bg-red-600 px-6 text-base font-semibold text-white hover:bg-red-700">
+                  <Link href="/claim">
+                    <FileHeart className="size-4" />
+                    Quy trình bồi thường
+                  </Link>
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
