@@ -101,9 +101,6 @@ export function ClaimPageClient() {
             <h1 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               Yêu cầu bồi thường đã được ghi nhận
             </h1>
-            <p className="mt-4 max-w-lg text-base leading-7 text-slate-500">
-              Cảm ơn bạn đã gửi hồ sơ. Đội ngũ Early Care sẽ xem xét tài liệu và liên hệ bạn trong thời gian sớm nhất.
-            </p>
           </motion.div>
 
           <motion.div
@@ -130,12 +127,6 @@ export function ClaimPageClient() {
                   <CheckCircle2 className="size-4" />
                 </div>
                 <p className="text-sm text-slate-700">Tiếp nhận hồ sơ thành công</p>
-              </div>
-              <div className="flex items-center gap-3 rounded-2xl border border-[#e4ecff] bg-[#f8fbff] px-4 py-3">
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-[var(--brand-primary)]">
-                  <Clock3 className="size-4" />
-                </div>
-                <p className="text-sm text-slate-700">Thẩm định tự động (1–3 ngày làm việc)</p>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-[#e4ecff] bg-[#f8fbff] px-4 py-3">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600">
