@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/HeroSection"
 import { InsurancePlansSection } from "@/components/sections/insurance-plans/insurance-plans-section"
 import { BenefitsComparisonSection } from "@/components/sections/insurance-plans/benefits-comparison-section"
 import { BenefitsOverviewSection } from "@/components/sections/insurance-plans/benefits-overview-section"
+import { ChatbotWidget } from "@/components/ChatbotWidget"
 import { WhyChooseEarlyCareSection } from "@/components/sections/insurance-plans/why-choose-early-care-section"
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <BenefitsComparisonSection />
       <WhyChooseEarlyCareSection />
       <BenefitsOverviewSection />
+      <ChatbotWidget />
     </div>
   )
 }
