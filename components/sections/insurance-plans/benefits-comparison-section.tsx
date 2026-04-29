@@ -77,7 +77,7 @@ function TableRowComponent({ row, tone = "primary" }: { row: TableRow; tone?: "p
   return (
     <div className="contents">
       <div
-        className={`${labelBase} ${labelPadding} py-1.5 px-3 flex items-start gap-2 border-b border-gray-100`}
+        className={`${labelBase} ${labelPadding} py-1 px-3 flex items-start gap-2 border-b border-gray-100`}
       >
         {row.icon && getIcon(row.icon)}
         <span className={isSubRow || isSubSubRow ? "leading-relaxed" : ""}>{row.label}</span>
@@ -103,7 +103,7 @@ function TableRowComponent({ row, tone = "primary" }: { row: TableRow; tone?: "p
 
 export function BenefitsComparisonSection() {
   return (
-    <section id="benefits" className="relative h-[calc(100vh-65px)] snap-start overflow-hidden bg-white py-6">
+    <section id="benefits" className="relative h-[calc(100vh-65px)] snap-start overflow-hidden bg-white py-3">
       <div className="relative z-10 mx-auto flex h-full max-w-[1200px] flex-col px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
@@ -111,12 +111,12 @@ export function BenefitsComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: easeArr }}
-          className="mb-4 shrink-0 text-center"
+          className="mb-2 shrink-0 text-center"
         >
-          <h2 className="text-2xl font-bold text-[var(--brand-primary)] sm:text-3xl">
+          <h2 className="text-lg font-bold text-[var(--brand-primary)] sm:text-xl">
             Bảng quyền lợi chi tiết
           </h2>
-          <p className="mx-auto mt-1 max-w-2xl text-sm text-muted-foreground">
+          <p className="mx-auto mt-0.5 max-w-2xl text-xs text-muted-foreground sm:text-sm">
             So sánh chi tiết quyền lợi bảo hiểm giữa ba gói để người dùng dễ dàng lựa chọn gói phù hợp.
           </p>
         </motion.div>
